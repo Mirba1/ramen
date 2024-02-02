@@ -47,3 +47,10 @@
     }
 
 }
+.navbar {
+    width: 100%;
+    position: absolute; /* Keeps the navbar at the top */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensure the navbar is above other content */
+}
