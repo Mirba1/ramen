@@ -8,10 +8,10 @@ import aboutUs from "../../assets/images/about us.webp";
 import {CloseIcon, MobileNav, Phone} from "../../assets/icons/Icons";
 const NavBar = () => {
   const [show, setShow] = useState(true);
-  const [mobile, setMobile] = useState(false)
   const location = useLocation(); // Get the current location object
 
   const [secondNav, setSecondNav] = useState(false)
+  const [mobile, setMobile] = useState(false)
 
   useEffect(() => {
     // Check if the current location's pathname is the root path
@@ -24,6 +24,12 @@ const NavBar = () => {
     setMobile(false);
     setSecondNav(false)
   }, [location]);
+
+  if(mobile || secondNav){
+    document.body.classList.add('active-modal')
+  }else{
+    document.body.classList.remove('active-modal')
+  }
 
   const handleNavClick = () => {
     if(location.pathname==='/'){
@@ -90,9 +96,9 @@ const NavBar = () => {
           <MobileNav onClick={handleNavClick} className="stroke-[#C74200] mt- h-6 w-6 ml-10 sm:h-16 sm:w-16 lg:hidden" />
 
         {mobile && (
-          <div className='absolute z-20 text-white top-0 right-0 h-screen w-full sm:w-[50%] bg-black lg:hidden overflow-y-hidden'>
+          <div className='absolute z-20 text-white top-0 right-0 h-screen w-full sm:w-[50%] bg-black lg:hidden '>
             <CloseIcon onClick={() => setMobile(false)} className='stroke-[#C74200] absolute z-50 right-5 top-5 w-10 sm:w-16'/>
-            <div className='flex flex-col items-center gap-10 h-full galaxyFoldNav overflow-y-hidden'>
+            <div className='flex flex-col items-center gap-10 h-full galaxyFoldNav'>
               <ul
                 className='flex mr-10 mt-20  justify-center w-full items-start gap-2'>
                 <Link to='palatine/info' className='relative'>
@@ -141,7 +147,7 @@ const NavBar = () => {
         )}
         {secondNav && (
           <div className='absolute z-20 text-white top-0 right-0 h-screen w-full sm:w-[50%] bg-black lg:hidden'>
-            <CloseIcon onClick={() => setShow(false)} className='stroke-[#C74200] absolute z-50 right-5 top-14 w-10 sm:w-16'/>
+            <CloseIcon onClick={() => setSecondNav(false)} className='stroke-[#C74200] absolute z-50 right-5 top-14 w-10 sm:w-16'/>
 
             <div className='flex flex-col ml-10 mt-36 text-white font-bold text-xl gap-16'>
               <p className='text-2xl'>CHOOSE LOCATION</p>
