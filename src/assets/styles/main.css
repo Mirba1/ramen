@@ -21,6 +21,16 @@
     background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
     z-index: 1; /* Ensure it's above the content */
 }
+.bgImageMain{
+    background-image: url("../images/ramens.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 700px; /* Height set to the width of the iPhone XR for cropping */
+    overflow: hidden;
+
+}
 
 .palatine_card{
     background-image: url("../images/Palatine.jpg");
@@ -46,11 +56,14 @@
         background-size:contain ;
     }
 
+
 }
 .navbar {
     width: 100%;
     position: absolute; /* Keeps the navbar at the top */
     top: 0;
     left: 0;
-    z-index: 1000; /* Ensure the navbar is above other content */
+}
+body.active-modal {
+    overflow-y: hidden;
 }
